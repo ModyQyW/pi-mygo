@@ -70,3 +70,8 @@ the same code, so they are recorded before they cost time.
   before any command that acts on the owner's account.
 - Rule: verify the acting identity in the same command that changes something
   outside the repo, never from an earlier status output.
+- Second half of the same trap: even with the right active account, `git push`
+  answered with the other account's token, because the macOS keychain helper
+  answers before gh's. `git -c credential.helper= -c credential.helper='!gh auth
+  git-credential' push` fixes it per command; rewriting the global helper
+  config would hide which account did what.
