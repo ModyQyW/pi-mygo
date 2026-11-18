@@ -59,3 +59,14 @@ the same code, so they are recorded before they cost time.
   until it works.
 - Rule: a phase gate may only reference things that phase builds. A menu item
   that does nothing is worse than a missing one.
+
+### 2026-11-18 — gh pushed as the wrong GitHub account
+
+- Symptom: `gh repo create ModyQyW/pi-mygo` failed with "drayeasy-ray cannot
+  create a repository for ModyQyW".
+- Cause: two accounts are logged in to `gh`, and the active one had switched.
+  `gh auth status` lists both, and the active line is easy to misread.
+- Fix: `gh auth switch --user ModyQyW`, then confirm with `gh api user -q .login`
+  before any command that acts on the owner's account.
+- Rule: verify the acting identity in the same command that changes something
+  outside the repo, never from an earlier status output.
