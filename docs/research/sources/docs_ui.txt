@@ -1,0 +1,197 @@
+MyGo!!!!!
+DocsUIExamplesBenchmarksShowcase
+Search docs…⌘K
+Native UI
+	•	Overview
+	◦	Guides
+	◦	Actions
+	◦	Choices
+	◦	Text input
+	◦	Code
+	◦	Documents
+	◦	Dates and colors
+	◦	Collections
+	◦	Containers
+	◦	Navigation
+	◦	Dialogs and messages
+	◦	Status
+	◦	Charts
+	◦	Images
+Guides
+	•	Views
+	•	Layout
+	•	Text
+	•	Styling and themes
+	•	Input
+	•	Drag and drop
+	•	Pages and navigation
+	•	Overlays
+	•	Accessibility
+	•	Right to left
+	•	Drawing and animation
+	•	Shaders
+	•	Transitions
+	•	Motion
+	•	Transforms
+	•	Custom widgets
+	•	Windows with native UI
+	•	Testing
+	•	Inspector
+	•	Rendering
+	•	Browsers
+	•	Migration
+	•	Performance
+Actions
+	•	Button
+	•	Link
+	•	Menu button
+	•	Split button
+	•	Context menu
+	•	Toggle
+	•	Segmented control
+	•	Toolbar
+Choices
+	•	Checkbox
+	•	Switch
+	•	Radio
+	•	Select
+	•	Slider
+	•	Range slider
+	•	Stepper
+	•	Rating
+Text input
+	•	Text input
+	•	Text-input primitives
+	•	Number input
+	•	Decimal input
+	•	Search field
+	•	Combobox
+	•	Autocomplete
+	•	Token field
+	•	Editable text
+	•	Find bar
+	•	Rich text editor
+Code
+	•	Code editor
+	•	Diff viewer
+Documents
+	•	Markdown
+Dates and colors
+	•	Calendar
+	•	Date input
+	•	Time input
+	•	Color picker
+Collections
+	•	List
+	•	Table
+	•	Tree
+	•	Outline
+	•	Grid view
+Containers
+	•	Scroll view
+	•	Grid
+	•	Split view
+	•	Collapsible
+	•	Accordion
+	•	Form
+	•	Web view
+Navigation
+	•	Tabs
+	•	Sidebar
+	•	Breadcrumbs
+	•	Back and forward buttons
+Dialogs and messages
+	•	Dialog
+	•	Alert dialog
+	•	Popover
+	•	Tooltip
+	•	Toast
+Status
+	•	Progress bar
+	•	Spinner
+	•	Meter
+	•	Badge
+Charts
+	•	Charts
+Images
+	•	Image
+	•	Video
+	•	Icon
+	•	Avatar
+MenuNative UI
+Native UI
+Native UI
+A window can show a user interface that MyGo draws itself instead of a web page. You write it in Go with package ui: there is no HTML, no JavaScript and no frontend build, and the window starts no webview, so it opens at once and uses little memory. MyGo draws it on the GPU, with Metal on macOS, Direct3D 11 on Windows and OpenGL on Linux.
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/egoist/mygo"
+	"github.com/egoist/mygo/ui"
+)
+
+// counter is the app's state.
+type counter struct{ n int }
+
+// view builds the window's interface from the state, for every frame.
+func (app *counter) view(c *ui.Context) {
+	ui.Column(c).Fill().Center().Gap(12).Children(func() {
+		ui.Text(c, fmt.Sprint(app.n)).FontSize(40).Bold()
+		if ui.PrimaryButton(c, "Increment").Clicked() {
+			app.n++
+		}
+	})
+}
+
+func main() {
+	app := &counter{}
+	mygo.App.WhenReady(func() {
+		mygo.NewWindow(mygo.WindowOptions{
+			Title:   "Counter",
+			Width:   320,
+			Height:  240,
+			Content: ui.View(app.view),
+		})
+	})
+	if err := mygo.App.Run(); err != nil {
+		log.Fatal(err)
+	}
+}
+Go
+Reading the examples. The examples in these guides are parts of a view such as counter.view: c is the view's *ui.Context, and app its receiver, the value of your own type that holds the state. A field such as app.volume or a method such as app.save() is one you declare on that type, as counter declares n; Views says more.
+mygo init -template native my-app starts a native UI project (see the CLI). The counter example includes a view test, and the gallery shows the controls and layouts.
+One app can have windows of both kinds. Native UI suits tools, settings, inspectors and utilities, and apps that must start instantly; a web page suits rich documents, existing web code and anything that needs what only a browser has. Screen readers and other assistive technology read native UI as they read other apps (see Accessibility).
+Guides
+ViewsBuild lifetimes, event queries and callbacks, keys, and changing the state from other goroutines.LayoutRows and columns, sizes, spacing, alignment and positioning.TextText and its style, rich text, links within sentences, and fonts.Styling and themesBackgrounds, borders, shadows and gradients, and the theme that follows the desktop.InputThe pointer, the keyboard focus, shortcuts, the keys held, input methods, dropped files, and widgets that take every key.Drag and dropValues dragged within the window, and rows reordered by dragging.Pages and navigationA router of pages with a history, layouts, transitions, and going back and forward.OverlaysWhat dialogs, popovers and the layer above the window share: the focus, Escape, and what is behind them.AccessibilityWhat screen readers see, naming elements, roles, descriptions and announcements.Right to leftInterfaces laid out from the right for Arabic and Hebrew, logical edges, and what mirrors.LanguagesThe window's language and regional formats, numbers and dates written in them, and the controls' own strings.Drawing and animationPainting on elements, shaping text, and values that ease to their targets.ShadersPixels computed on the GPU by shaders written in Go's syntax, with values and images the app passes them.TransitionsElements that move, resize, recolor and shade smoothly as the layout changes, and come and go.MotionSprings that keep their velocity, curves, delays, values thrown by the pointer, keyframes, timelines that play several tweens on one playhead, and knowing when they are done.TransformsVisual translation, scaling and rotation of any element, which the pointer, text input and accessibility follow.Custom widgetsThe widgets without a look that every widget is built on, and widgets of your own.Windows with native UIWindow options, title bars drawn by the view, zooming the content, and vibrancy.TestingRunning a view without a window, as fast as a unit test.InspectorThe elements of a window, their boxes and styles, and the time frames take, beside the content.RenderingHow MyGo draws, on the GPU or the CPU.BrowsersThe same app in a page, compiled to WebAssembly and drawn with WebGL 2.MigrationElement values, persistent handles, focus bindings and source migration.PerformanceMeasured frame costs and retained memory.
+Actions
+ButtonA push button, plain or in the accent color.LinkText that opens a URL, or a page of a router.Menu buttonA button opening a menu below it, the system's or one MyGo draws in the window with the theme's look.Split buttonA button joined to an arrow opening a menu of related actions, as Save and Save As….Context menuA menu of the system's for any element, on a right click, or one MyGo draws in the window with the theme's look; every menu of a window drawn so, text inputs' and tables' too.ToggleA button that stays pressed, and toggles joined in a group.Segmented controlSegments choosing one of a few views.ToolbarA row of controls along a window, which overflow into a menu.
+Choices
+CheckboxA check box, and a check box over a group of others.SwitchA switch that turns a setting on and off.RadioRadio buttons choosing one value, in a group.SelectA drop-down choosing one of a list.SliderA slider setting a value in a range, with or without steps.Range sliderTwo knobs setting a low and a high value.StepperArrows stepping a value up and down.RatingStars setting a rating.
+Text input
+Text inputText on one line or several, with selection, undo, the clipboard and input methods.Text-input primitivesApplication-owned text, native composition and queries, and retained geometry for custom controls.Number inputA number in a range, typed or stepped.Decimal inputAn exact decimal, as an amount of money, typed or stepped, never rounded.Search fieldA field for searching, which Escape clears.ComboboxA field choosing one of a list, which typing filters.AutocompleteA text input suggesting what was typed.Token fieldA list of strings as chips, as tags or recipients.Editable textA text renamed in place, as a file's name in Finder.Find barA bar for finding text, with the count of matches and the next and previous ones.Rich text editorAttributed text with formats, links, headings, lists, tasks and images, the shortcuts and Format menu of word processors, rich copy and paste, and Markdown.
+Code
+Code editorAn editor of code as Zed's, with highlighting, several carets, folding, completions and diagnostics, for files of any size.Diff viewerThe changes between two texts, side by side or unified, with the new text editable and changes to review.
+Documents
+MarkdownCommonMark and GitHub's Markdown, as finished documents or a language model's replies streaming in, selectable and copied as text or Markdown.
+Dates and colors
+CalendarA month choosing a day.Date inputA date in a field, chosen in a calendar below it.Time inputThe time of day, its hours and minutes typed or stepped.Color pickerA color well, and the picker it opens.
+Collections
+ListRows of any number and height, built only while in view.TableRows in columns that the user sorts, resizes and moves.TreeItems that open and close, built inside the items they belong to.OutlineA tree of any size, as a list or a table.Grid viewItems in a grid of any size, as a photo library.
+Containers
+Scroll viewContainers that scroll their children.GridChildren in columns and rows, as CSS grid lays them out.Split viewTwo panes with a divider the user drags.CollapsibleContent that a label shows and hides.AccordionSections that open and close, one above the other.FormLabeled controls with descriptions and errors.Web viewA web page in the window, under the native UI painted after it, as menus and dialogs.
+Navigation
+TabsA row of tabs choosing a page.SidebarA source list of items in sections, as Finder's.BreadcrumbsA path whose items take the user back.Back and forward buttonsButtons going through a router's history.
+Dialogs and messages
+DialogA dialog over the dimmed window.Alert dialogA question about something important, with buttons.PopoverA panel below an element.TooltipA tip shown as the pointer rests on an element, or the keyboard focus comes to it.ToastA short message near the bottom of the window, with an action or not.
+Status
+Progress barWork done so far, or of unknown length.SpinnerSpokes turning while work of unknown length goes on.MeterA value in a range, colored by its level.BadgeA short text in a pill, as a count.
+Charts
+ChartsScales, axes and marks without a look, for bars, lines, areas, stacks and donuts, and a selection the pointer and the keyboard move.
+Images
+ImageBitmaps and SVGs in their own colors.VideoVideo files and streams with sound, played by the system's media engine, and animated GIFs and PNGs, as trailers, clips behind the content or previews.IconSVG icons in the color of the text.AvatarA picture of a person, or their initials.
+Next Views
+Edit this page on GitHub
+MyGo 0.10.0 · MIT License
+DocsBenchmarksShowcaseSponsorsReleasesGitHub

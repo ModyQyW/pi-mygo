@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+.mygo/
+mygo_windows_*.syso
+.DS_Store
+*.log
+# Signing keys never enter the repository (see docs/plan/00-plan.md).
+mygo-update.key
+mygo/update-keys/
