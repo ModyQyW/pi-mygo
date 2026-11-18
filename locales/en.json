@@ -1,0 +1,57 @@
+{
+  "@@locale": "en",
+  "mygo.appName": "Pi MyGo",
+  "appName": "Pi MyGo",
+  "mygo.appDescription": "A desktop app for the pi coding agent",
+  "tagline": "Your pi, in a window.",
+  "@tagline": {
+    "description": "One line under the app name on the welcome screen."
+  },
+  "welcomeBody": "A window onto the pi you already run. Models, extensions and sessions stay where they are.",
+  "envTitle": "Environment",
+  "envPi": "pi executable",
+  "envVersion": "Version",
+  "envCompat": "Compatibility",
+  "envApp": "App version",
+  "envPlatform": "Platform",
+  "envRecheck": "Check again",
+  "envChecking": "Checking…",
+  "envMissing": "Not found",
+  "envUnsupported": "Unsupported",
+  "envError": "Could not check",
+  "envDetailMissing": "No pi executable found. Install pi, or set PI_EXECUTABLE.",
+  "envDetailMin": "This app needs pi {version} or newer.",
+  "@envDetailMin": {
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "1.5.0"
+      }
+    }
+  },
+  "envDetailTested": "Newer than the version this app was tested with.",
+  "envDetailSeries": "This app supports pi {series}. A newer app is needed.",
+  "@envDetailSeries": {
+    "placeholders": {
+      "series": {
+        "type": "String",
+        "example": "1.x"
+      }
+    }
+  },
+  "compatOk": "Tested",
+  "compatUntested": "Newer than tested",
+  "compatTooOld": "Too old",
+  "compatTooNew": "Too new",
+  "sidebarTitle": "Projects",
+  "sidebarEmpty": "Sessions appear here once pi has run in a folder.",
+  "sidebarAdd": "Add project",
+  "actionSettings": "Settings",
+  "actionSearch": "Search",
+  "actionNewSession": "New session",
+  "actionOpenProject": "Open project",
+  "titlebarUntitled": "No session",
+  "envInstallHint": "Install pi first, then check again:",
+  "envCopy": "Copy",
+  "envCopied": "Copied"
+}

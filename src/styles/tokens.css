@@ -1,0 +1,64 @@
+/* Pi paper: warm surfaces, ink text, hairlines instead of shadows. Every
+   component reads these variables; no component uses a raw colour. */
+
+:root {
+  color-scheme: light;
+
+  --paper: #faf7f2;
+  --surface: #fffdf9;
+  --sunken: #f3efe7;
+  --ink: #17161a;
+  --ink-2: #4a4640;
+  --ink-3: #7c756c;
+  --ink-4: #a9a096;
+  --hairline: #e5ded3;
+  --hairline-strong: #d6ccbe;
+  --coral: #f09082;
+  --coral-ink: #c9553e;
+  --blue: #4d9abf;
+  --blue-ink: #2f7c9e;
+  --amber: #f1be58;
+  --amber-ink: #a06f14;
+  --success: #3c7a57;
+  --danger: #b4432f;
+  --danger-bg: #fbede9;
+
+  --font-ui: -apple-system, "SF Pro Text", "Inter", "PingFang SC",
+    "Noto Sans SC", system-ui, sans-serif;
+  --font-read: "New York", ui-serif, Charter, "Songti SC",
+    "Noto Serif CJK SC", serif;
+  --font-mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+
+  --radius-chip: 3px;
+  --radius-card: 6px;
+  --radius-sheet: 10px;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-hover: 80ms;
+  --dur-expand: 120ms;
+  --dur-drawer: 160ms;
+
+  --titlebar-height: var(--mygo-titlebar-height, 44px);
+  --titlebar-inset-left: var(--mygo-titlebar-inset-left, 78px);
+  --titlebar-controls-bottom: var(--mygo-titlebar-controls-bottom, 38px);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #14120f;
+  --surface: #1b1815;
+  --sunken: #100e0c;
+  --ink: #f3ede3;
+  --ink-2: #c9c1b6;
+  --ink-3: #938a7f;
+  --ink-4: #6b645b;
+  --hairline: #2a2620;
+  --hairline-strong: #3a352d;
+  --coral-ink: #e8826e;
+  --blue-ink: #7fbbd5;
+  --amber-ink: #d9a544;
+  --success: #6fa985;
+  --danger: #e0796a;
+  --danger-bg: #2a1a16;
+}
