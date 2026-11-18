@@ -5,20 +5,23 @@ with [MyGo](https://mygo.run) and React, it talks to the pi you already have
 installed and signed in, so your models, extensions, skills and sessions work
 exactly as they do in the terminal.
 
-Status: **pre-alpha**. The plan is [here](docs/plan/00-plan.md); nothing is
-released yet.
+Status: **pre-alpha**. Today it opens a window, finds your pi install, checks the
+version against the supported range, and reports the result. Sessions, the
+transcript and the composer are the next milestone. The full v0.1 target is in
+[docs/plan/00-plan.md](docs/plan/00-plan.md); nothing is released yet.
 
 ## Why another pi client
 
 - **Your pi, not a copy.** No bundled runtime, no Node sidecar, no second
   credential store. The app starts `pi --mode rpc` and speaks its protocol.
-- **A workspace, not a chat box.** Projects and sessions in a sidebar, several
-  live sessions at once, each with its own pi process.
-- **A transcript built for reading.** Streaming markdown, code and diffs, tool
-  cards that collapse to one line, thinking that stays out of the way until you
-  want it, and search that works on a five-thousand-message session.
-- **Steering is a first-class move.** Enter sends or steers, ⌘Enter queues a
-  follow-up, Esc takes the queue back into the editor.
+- **A workspace, not a chat box** (planned). Projects and sessions in a sidebar,
+  several live sessions at once, each with its own pi process.
+- **A transcript built for reading** (planned). Streaming markdown, code and
+  diffs, tool cards that collapse to one line, thinking that stays out of the
+  way until you want it, and search that works on a five-thousand-message
+  session.
+- **Steering is a first-class move** (planned). Enter sends or steers, ⌘Enter
+  queues a follow-up, Esc takes the queue back into the editor.
 
 ## Requirements
 
